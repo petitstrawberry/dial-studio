@@ -46,7 +46,7 @@ public enum KeyModifier: String, Codable, CaseIterable, Identifiable {
     }
 }
 public enum ActionType: String, Codable, CaseIterable, Identifiable {
-    case none, block, switchLayer, cycleLayer, previousPage, overlayHold, overlayToggle, switchProfile, cycleProfile, automaticProfile, shortcut, scroll, media, midi, shell, appleScript, browserScript
+    case none, block, switchLayer, cycleLayer, previousPage, overlayHold, overlayToggle, switchProfile, cycleProfile, automaticProfile, shortcut, scroll, media, midi, shell, appleScript, browserScript, plugin
     public var id: String { rawValue }
     public var title: String {
         switch self {
@@ -67,6 +67,7 @@ public enum ActionType: String, Codable, CaseIterable, Identifiable {
         case .shell: return L("シェルスクリプト")
         case .appleScript: return "AppleScript"
         case .browserScript: return L("ブラウザ JavaScript")
+        case .plugin: return L("プラグイン")
         }
     }
     public var isLayer: Bool { [.switchLayer, .cycleLayer, .previousPage, .overlayHold, .overlayToggle].contains(self) }
@@ -80,6 +81,7 @@ public struct StudioAction: Codable, Equatable {
     public var targetProfile: UUID?
     public var keyCommand: String?
     public var mcuIndex: Int?
+    public var pluginSettings: [String: String]?
     public init(_ type: ActionType = .none, value: String = "", amount: Double = 1, layer: UUID? = nil, profile: UUID? = nil) {
         self.type = type; self.value = value; self.amount = amount; self.targetLayer = layer; self.targetProfile = profile
     }

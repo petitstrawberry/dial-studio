@@ -464,3 +464,19 @@
 
 "同時押し: %@" = "Held buttons: %@";
 "この入力の操作はすべて割り当て済みです。既存の割り当てにアクションを追加してください。" = "All events for this input are assigned. Add an action to an existing assignment.";
+"プラグイン" = "Plugins";
+"プラグインを追加…" = "Add Plugin…";
+"フォルダを開く" = "Open Folder";
+"再読み込み" = "Reload";
+"プラグインまたはアクションが見つかりません。" = "The plugin or action could not be found.";
+"プラグインIDが重複しています" = "Duplicate plugin ID";
+"同じIDのプラグインが既にあります" = "A plugin with this ID already exists.";
+"同じ名前のプラグインが既にあります" = "A plugin with this name already exists.";
+"プラグインの拡張子は .dialplugin にしてください" = "Plugin folders must use the .dialplugin extension.";
+"プラグインのIDまたはアクション定義が不正です" = "The plugin ID or action definitions are invalid.";
+"プラグインの実行ファイルがないか実行できません" = "The plugin executable is missing or not executable.";
+"作者" = "Author";
+"説明" = "Description";
+"ライセンス" = "License";
+"未記載" = "Not provided";
+"バージョン" = "Version";

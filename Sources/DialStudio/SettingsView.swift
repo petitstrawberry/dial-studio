@@ -71,6 +71,28 @@ struct SettingsView: View {
                     HStack { Button(L("アクセシビリティ設定を開く")) { openSettings("Privacy_Accessibility") }; Button(L("オートメーション設定を開く")) { openSettings("Privacy_Automation") } }
                     Text(L("Chrome: 表示 → 開発 / デベロッパー → Apple Events からの JavaScript を許可。\nLogic: Mackie Control の入出力を Dial Studio MCU に設定。")).font(.caption).foregroundStyle(.secondary)
                 }
+                Section(L("プラグイン")) {
+                    HStack {
+                        Button(L("プラグインを追加…"), action: model.installPlugin)
+                        Button(L("フォルダを開く"), action: model.openPluginsFolder)
+                        Button(L("再読み込み"), action: model.refreshPlugins)
+                    }
+                    ForEach(model.plugins, id: \.manifest.id) { plugin in
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(plugin.manifest.name).font(.headline)
+                            LabeledContent(L("作者"), value: plugin.manifest.author.map(L) ?? L("未記載"))
+                            LabeledContent(L("説明"), value: plugin.manifest.description.map(L) ?? L("未記載"))
+                            LabeledContent(L("ライセンス"), value: plugin.manifest.license ?? L("未記載"))
+                            LabeledContent(L("バージョン"), value: plugin.manifest.version)
+                            if plugin.directory.deletingLastPathComponent().standardizedFileURL == PluginRegistry.directory.standardizedFileURL {
+                                Button(L("削除")) { model.removePlugin(plugin) }
+                            }
+                        }
+                    }
+                    ForEach(model.pluginErrors, id: \.self) { message in
+                        Text(message).font(.caption).foregroundStyle(.orange)
+                    }
+                }
             }.formStyle(.grouped)
             Divider()
             HStack { Button(L("保存して反映"), action: model.save); Spacer(); Button(L("閉じる")) { dismiss() }.keyboardShortcut(.cancelAction) }.padding(16)

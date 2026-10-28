@@ -1,0 +1,23 @@
+name: Plugin SDKs
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test Swift SDK
+        run: swift test --package-path PluginSDK/Swift
+      - name: Build Swift plugin
+        run: swift build --package-path examples/swift-plugin -c release
+      - name: Test and package Rust SDK
+        run: |
+          cargo test --manifest-path PluginSDK/Rust/Cargo.toml --locked
+          cargo package --manifest-path PluginSDK/Rust/Cargo.toml --locked
+      - name: Build Rust WebAssembly plugin
+        run: |
+          rustup target add wasm32-unknown-unknown
+          cargo build --manifest-path examples/rust-plugin/Cargo.toml --locked --release --target wasm32-unknown-unknown

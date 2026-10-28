@@ -8,8 +8,10 @@ let package = Package(
         .executable(name: "ulanzid", targets: ["ulanzid"]),
         .executable(name: "DialStudio", targets: ["DialStudio"]),
         .library(name: "UlanziKit", targets: ["UlanziKit"]),
+        .library(name: "DialPluginSDK", targets: ["DialPluginSDK"]),
     ],
     targets: [
+        .target(name: "DialPluginSDK", path: "PluginSDK/Swift/Sources/DialPluginSDK"),
         .target(
             name: "UlanziKit",
             linkerSettings: [
@@ -19,6 +21,7 @@ let package = Package(
                 .linkedFramework("AudioToolbox"),
                 .linkedFramework("AppKit"),
                 .linkedFramework("ApplicationServices"),
+                .linkedFramework("JavaScriptCore"),
             ]
         ),
         .executableTarget(name: "ulanzid", dependencies: ["UlanziKit"]),

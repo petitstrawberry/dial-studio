@@ -57,6 +57,7 @@ Button events can run on press, hold threshold, release, short release, or relea
 - **Mackie Control**: transport, jog, V-Pots, buttons, and fader positions. In Logic Pro, add a Mackie Control surface and set its input and output to **Dial Studio MCU** while the service is running.
 - **Logic**: playback and recording controls. Recording-state actions require Accessibility access and a visible Logic control bar.
 - **Scripts**: shell, AppleScript, and JavaScript in the active Chrome tab. Chrome JavaScript requires **View → Developer → Allow JavaScript from Apple Events** and macOS Automation permission.
+- **Plugins**: install `.dialplugin` bundles from Settings. Plugin actions appear in the action palette and can be configured and combined like other actions. The included Utilities plugin opens URLs, applications, and files.
 
 System media seeking depends on support from the active media app and uses the private MediaRemote framework through [MediaRemote Adapter](https://github.com/ungive/mediaremote-adapter). The former YouTube-specific actions have been removed.
 
@@ -72,5 +73,7 @@ If the device does not connect or an action does not run, check the connection m
 swift test
 swift build
 ```
+
+Plugins can contain native dynamic libraries or WebAssembly modules. See [Plugin development](docs/plugins.md) for the manifest and runtime interface.
 
 The D100H protocol implementation draws on [ulanzi-d100h-homebrew](https://github.com/brendanwelsh/ulanzi-d100h-homebrew) and [hamdial](https://github.com/ftl/hamdial).

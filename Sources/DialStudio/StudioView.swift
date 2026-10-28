@@ -523,6 +523,21 @@ struct StudioView: View {
             Text(action.type == .browserScript ? L("ctx / amount / return が使えます。") : L("DIAL_CONTEXT_JSON と DIAL_AMOUNT を渡します。")).font(.caption2).foregroundStyle(.secondary)
         } else if action.type == .shortcut {
             ShortcutEditor(value: actionText(binding, action: action, stepID: stepID))
+        } else if action.type == .plugin {
+            if let plugin = model.plugins.first(where: { action.value.hasPrefix($0.manifest.id + "/") }),
+               let definition = plugin.manifest.actions.first(where: { action.value == PluginRegistry.key(plugin: plugin.manifest.id, action: $0.id) }) {
+                ForEach(definition.fields ?? []) { field in
+                    TextField(L(field.title), text: Binding(get: { action.pluginSettings?[field.id] ?? field.defaultValue ?? "" }, set: { value in
+                        model.updateAction(binding.id, stepID: stepID) { action in
+                            if action.pluginSettings == nil { action.pluginSettings = [:] }
+                            action.pluginSettings?[field.id] = value
+                        }
+                    })).textFieldStyle(.roundedBorder)
+                }
+                if definition.relative == true { amountField(binding, action: action, stepID: stepID) }
+            } else {
+                Text(L("プラグインまたはアクションが見つかりません。")) .foregroundStyle(.orange)
+            }
         } else if action.type == .scroll {
             amountField(binding, action: action, stepID: stepID)
         }
@@ -641,12 +656,13 @@ struct StudioView: View {
         case .shell: return "terminal"
         case .appleScript: return "applescript"
         case .browserScript: return "chevron.left.forwardslash.chevron.right"
+        case .plugin: return "puzzlepiece.extension"
         }
     }
 
     private func actionTitle(_ action: StudioAction) -> String {
         if action.type == .none { return L("未設定") }
-        return ActionTemplate.all.first { $0.action.type == action.type && (action.value.isEmpty || $0.action.value == action.value) }?.title ?? action.type.title
+        return model.actionTemplates.first { $0.action.type == action.type && (action.value.isEmpty || $0.action.value == action.value) }?.title ?? action.type.title
     }
 }
 

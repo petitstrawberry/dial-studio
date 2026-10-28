@@ -6,8 +6,9 @@ struct ActionPaletteView: View {
     let model: StudioModel
 
     private var groups: [(name: String, items: [ActionTemplate])] {
-        ActionTemplate.groups.compactMap { name in
-            let items = ActionTemplate.all.filter { $0.group == name }
+        let names = ActionTemplate.groups + model.plugins.map { L($0.manifest.name) }.filter { !ActionTemplate.groups.contains($0) }
+        return Array(NSOrderedSet(array: names)).compactMap { $0 as? String }.compactMap { name in
+            let items = model.actionTemplates.filter { $0.group == name }
             return items.isEmpty ? nil : (name, items)
         }
     }

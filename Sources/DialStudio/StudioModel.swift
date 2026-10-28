@@ -28,6 +28,44 @@ struct Activity: Identifiable {
     var running = false
     var paused = false
     var error: String?
+    var plugins: [InstalledPlugin] = []
+    var pluginErrors: [String] = []
+    var pluginTemplates: [ActionTemplate] { PluginRegistry.templates(plugins) }
+    var actionTemplates: [ActionTemplate] { ActionTemplate.all + pluginTemplates }
+    func template(for payload: String) -> ActionTemplate? { actionTemplates.first { $0.payload == payload } }
+    func refreshPlugins() {
+        let result = PluginRegistry.scan()
+        plugins = result.plugins; pluginErrors = result.errors
+    }
+    func openPluginsFolder() {
+        do {
+            try FileManager.default.createDirectory(at: PluginRegistry.directory, withIntermediateDirectories: true)
+            NSWorkspace.shared.open(PluginRegistry.directory)
+        } catch { self.error = String(describing: error) }
+    }
+    func installPlugin() {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false; panel.canChooseDirectories = true
+        panel.treatsFilePackagesAsDirectories = true
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        do {
+            let plugin = try PluginRegistry.load(url)
+            refreshPlugins()
+            guard !plugins.contains(where: { $0.manifest.id == plugin.manifest.id }) else { throw ConfigError("同じIDのプラグインが既にあります") }
+            try FileManager.default.createDirectory(at: PluginRegistry.directory, withIntermediateDirectories: true)
+            let destination = PluginRegistry.directory.appendingPathComponent(url.lastPathComponent, isDirectory: true)
+            guard !FileManager.default.fileExists(atPath: destination.path) else { throw ConfigError("同じ名前のプラグインが既にあります") }
+            try FileManager.default.copyItem(at: url, to: destination)
+            refreshPlugins()
+        } catch { self.error = String(describing: error) }
+    }
+    func removePlugin(_ plugin: InstalledPlugin) {
+        guard plugin.directory.deletingLastPathComponent().standardizedFileURL == PluginRegistry.directory.standardizedFileURL else { return }
+        do {
+            try FileManager.default.trashItem(at: plugin.directory, resultingItemURL: nil)
+            refreshPlugins()
+        } catch { self.error = String(describing: error) }
+    }
     var helperBusy = false
     var showSettings = false
     var showLog = false
@@ -67,6 +105,7 @@ struct Activity: Identifiable {
         selectedProfile = initial.profiles.first?.id; selectedPage = initial.profiles.first?.pages.first?.id; selectedLayer = initial.profiles.first?.pages.first?.layers.first?.id
         selectedBinding = initial.profiles.first?.pages.first?.layers.first?.bindings.first?.id
         error = loadError
+        refreshPlugins()
         if demonstration { log("preview", L("プレビューは外部アプリを操作しません。入力条件とレイヤー遷移を試せます。")) }
     }
     var profileIndex: Int? { configuration.profiles.firstIndex { $0.id == selectedProfile } }
@@ -320,7 +359,7 @@ struct Activity: Identifiable {
         }
     }
     @discardableResult func appendAction(_ payloads: [String], binding: StudioBinding) -> Bool {
-        guard payloads.count == 1, let template = ActionTemplate.from(payload: payloads[0]), let p = selectedProfile, let l = selectedLayer else { return false }
+        guard payloads.count == 1, let template = template(for: payloads[0]), let p = selectedProfile, let l = selectedLayer else { return false }
         do {
             let previous = configuration
             var updated = configuration
@@ -410,7 +449,7 @@ struct Activity: Identifiable {
         if payloads.count == 1, payloads[0].hasPrefix("dialstudio/assignment/") {
             return swapAssignments(payloads[0], to: control, gesture: control == .dial ? gesture : nil)
         }
-        guard payloads.count == 1, let template = ActionTemplate.from(payload: payloads[0]), let p = selectedProfile, let l = selectedLayer else { return false }
+        guard payloads.count == 1, let template = template(for: payloads[0]), let p = selectedProfile, let l = selectedLayer else { return false }
         do {
             let old = configuration
             var updated = configuration

@@ -1,0 +1,1 @@
+{"id":"org.example.swift","name":"Swift Example","version":"1.0.0","author":"Example Author","description":"Open a URL using the Swift SDK.","license":"MIT","kind":"dylib","entrypoint":"libExamplePlugin.dylib","actions":[{"id":"open","title":"Open URL","symbol":"link","fields":[{"id":"url","title":"URL","defaultValue":"https://example.com"}]}]}

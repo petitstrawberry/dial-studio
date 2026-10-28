@@ -19,6 +19,11 @@ if [[ ! -s Support/AppIcon.icns ]]; then
     exit 1
 fi
 cp Support/AppIcon.icns "$app_dir/Contents/Resources/AppIcon.icns"
+mkdir -p "$app_dir/Contents/Resources/Plugins"
+cp -R Support/Plugins/. "$app_dir/Contents/Resources/Plugins/"
+xcrun clang -dynamiclib -fobjc-arc -arch arm64 -arch x86_64 Support/UtilityPlugin.m -framework Foundation \
+    -o "$app_dir/Contents/Resources/Plugins/Utilities.dialplugin/utilities.dylib"
+codesign --force --sign - "$app_dir/Contents/Resources/Plugins/Utilities.dialplugin/utilities.dylib"
 adapter="$PWD/Support/MediaRemoteAdapter"
 adapter_resources="$app_dir/Contents/Resources/MediaRemoteAdapter"
 cp "$adapter/mediaremote-adapter.pl" "$adapter/LICENSE" "$adapter_resources/"

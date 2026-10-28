@@ -1,1 +1,8 @@
 /* Japanese source strings. */
+"Utilities" = "ユーティリティ";
+"Open URL" = "URLを開く";
+"Open Application" = "アプリを開く";
+"Open File or Folder" = "ファイル・フォルダを開く";
+"Application name or path" = "アプリ名またはパス";
+"File or folder path" = "ファイル・フォルダのパス";
+"Open URLs, applications, files, and folders." = "URL、アプリ、ファイル、フォルダを開きます。";

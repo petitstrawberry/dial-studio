@@ -1,0 +1,1 @@
+{"id":"org.example.rust","name":"Rust Example","version":"1.0.0","author":"Example Author","description":"Open a URL using the Rust SDK.","license":"MIT","kind":"wasm","entrypoint":"dial_example_rust.wasm","actions":[{"id":"open","title":"Open URL","symbol":"link","fields":[{"id":"url","title":"URL","defaultValue":"https://example.com"}]}]}

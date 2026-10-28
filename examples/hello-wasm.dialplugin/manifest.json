@@ -1,0 +1,11 @@
+{
+  "id": "org.example.hello",
+  "name": "Hello Wasm",
+  "version": "1.0.0",
+  "author": "Example Author",
+  "description": "A minimal WebAssembly plugin.",
+  "license": "MIT",
+  "kind": "wasm",
+  "entrypoint": "hello.wasm",
+  "actions": [{ "id": "hello", "title": "Say Hello", "symbol": "hand.wave" }]
+}

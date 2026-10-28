@@ -18,6 +18,10 @@ func cleanup(_ block: @escaping () -> Void) {
 }
 do {
     switch args.first ?? "help" {
+    case "plugin-run":
+        NSApplication.shared.setActivationPolicy(.prohibited)
+        guard args.count == 3, let request = ProcessInfo.processInfo.environment["DIAL_PLUGIN_REQUEST"] else { throw ConfigError("プラグイン入力がありません") }
+        print(try PluginHost.run(kind: args[1], path: args[2], request: request))
     case "chrome-worker":
         // NSAppleScript initializes AppKit; without an explicit policy this
         // helper is registered as another foreground Dial Studio application.
@@ -79,6 +83,11 @@ do {
     case "check":
         let config = try StudioConfiguration.load(from: url)
         print("OK: \(config.profiles.count) profiles, \(config.profiles.flatMap(\.pages).flatMap(\.layers).count) layers")
+    case "plugins":
+        let result = PluginRegistry.scan()
+        for plugin in result.plugins { print("\(plugin.manifest.id) \(plugin.manifest.version) — \(plugin.manifest.name)") }
+        for error in result.errors { FileHandle.standardError.write(Data("\(error)\n".utf8)) }
+        if !result.errors.isEmpty { exit(1) }
     case "list":
         if let info = HIDReader.find() { print(info) } else { print("D100H not found"); exit(1) }
     case "ble":
@@ -92,6 +101,7 @@ do {
           serve --config PATH        user service; NDJSON commands on stdin
           init [--config PATH]       create starter configuration
           check [--config PATH]      validate configuration
+          plugins                    list installed plugins
           list                       inspect connected D100H
           watch [--raw]              connect to running root helper
           watch --vendor --seconds 8 probe vendor mode without root

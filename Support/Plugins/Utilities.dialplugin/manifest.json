@@ -1,0 +1,15 @@
+{
+  "id": "studio.dial.utilities",
+  "name": "Utilities",
+  "version": "1.0.0",
+  "author": "petitstrawberry",
+  "description": "Open URLs, applications, files, and folders.",
+  "license": "MIT",
+  "kind": "dylib",
+  "entrypoint": "utilities.dylib",
+  "actions": [
+    {"id": "open-url", "title": "Open URL", "symbol": "link", "fields": [{"id": "url", "title": "URL", "defaultValue": "https://"}]},
+    {"id": "open-app", "title": "Open Application", "symbol": "app", "fields": [{"id": "application", "title": "Application name or path"}]},
+    {"id": "open-file", "title": "Open File or Folder", "symbol": "folder", "fields": [{"id": "path", "title": "File or folder path"}]}
+  ]
+}

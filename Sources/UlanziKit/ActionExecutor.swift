@@ -200,6 +200,8 @@ public final class StudioActionExecutor {
             }
         case .shell:
             return try ProcessRunner.checked("/bin/zsh", ["-c", action.value], environment: ["DIAL_CONTEXT_JSON": json, "DIAL_AMOUNT": String(action.amount), "DIAL_PROFILE": invocation.profile.name, "DIAL_LAYER": invocation.layer.name], timeout: 5)
+        case .plugin:
+            return try PluginRegistry.execute(invocation)
         case .appleScript:
             return try ProcessRunner.checked("/usr/bin/osascript", ["-e", action.value], environment: ["DIAL_CONTEXT_JSON": json, "DIAL_AMOUNT": String(action.amount)], timeout: 5)
         default: break
