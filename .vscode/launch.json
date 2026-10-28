@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:ulanzi}",
+            "name": "Debug ulanzid",
+            "target": "ulanzid",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug ulanzid"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:ulanzi}",
+            "name": "Release ulanzid",
+            "target": "ulanzid",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release ulanzid"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:ulanzi}",
+            "name": "Debug DialStudio",
+            "target": "DialStudio",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug DialStudio"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:ulanzi}",
+            "name": "Release DialStudio",
+            "target": "DialStudio",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release DialStudio"
+        }
+    ]
+}

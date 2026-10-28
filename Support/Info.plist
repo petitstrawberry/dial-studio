@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleName</key><string>Dial Studio</string>
+<key>CFBundleDevelopmentRegion</key><string>ja</string>
+<key>CFBundleLocalizations</key><array><string>en</string><string>ja</string></array>
+<key>CFBundleDisplayName</key><string>Dial Studio</string>
+<key>CFBundleIdentifier</key><string>local.dialstudio.app</string>
+<key>CFBundleExecutable</key><string>DialStudio</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleShortVersionString</key><string>0.2.0</string>
+<key>CFBundleVersion</key><string>2</string>
+<key>CFBundleIconFile</key><string>AppIcon.icns</string>
+<key>LSMinimumSystemVersion</key><string>13.0</string>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSAppleEventsUsageDescription</key><string>Chrome のタブと動画を操作し、設定した AppleScript を実行します。</string>
+<key>NSBluetoothAlwaysUsageDescription</key><string>Ulanzi D100H に接続します。</string>
+</dict></plist>

@@ -1,0 +1,355 @@
+{
+  "holdMilliseconds" : 450,
+  "hudPosition" : "bottomCenter",
+  "menuBarOnly" : false,
+  "mode" : "preview",
+  "profiles" : [
+    {
+      "bundleID" : "com.google.Chrome",
+      "enabled" : true,
+      "host" : "",
+      "id" : "4F3986BB-FDEE-4A22-AF14-FF7B50005808",
+      "name" : "Chrome",
+      "pages" : [
+        {
+          "id" : "7E57B1EE-3E66-4B27-BF28-255BB96934F0",
+          "layers" : [
+            {
+              "bindings" : [
+                {
+                  "action" : {
+                    "amount" : 5,
+                    "type" : "media",
+                    "value" : "seek"
+                  },
+                  "control" : "dial",
+                  "enabled" : true,
+                  "gesture" : "clockwise",
+                  "held" : [
+
+                  ],
+                  "id" : "F5486092-0D73-4966-9ADF-74CE3C7FEFCF",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "シーク 5秒 ＋"
+                },
+                {
+                  "action" : {
+                    "amount" : -5,
+                    "type" : "media",
+                    "value" : "seek"
+                  },
+                  "control" : "dial",
+                  "enabled" : true,
+                  "gesture" : "counterclockwise",
+                  "held" : [
+
+                  ],
+                  "id" : "CC186485-EF05-44EE-9EB6-F3A933818B99",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "シーク 5秒 −"
+                },
+                {
+                  "action" : {
+                    "amount" : 1,
+                    "type" : "media",
+                    "value" : "playPause"
+                  },
+                  "control" : "topMiddle",
+                  "enabled" : true,
+                  "gesture" : "tap",
+                  "held" : [
+
+                  ],
+                  "id" : "2C02212D-6F0F-4B13-8321-FCDC7FE27EB0",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "再生 \/ 一時停止"
+                },
+                {
+                  "action" : {
+                    "amount" : 1,
+                    "targetLayer" : "0D5D8685-DA48-4319-9511-B9FBF125304E",
+                    "type" : "overlayHold",
+                    "value" : ""
+                  },
+                  "control" : "leftTop",
+                  "enabled" : true,
+                  "gesture" : "press",
+                  "held" : [
+
+                  ],
+                  "id" : "41234F22-5D93-4F84-8AD2-301447196AA1",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "押している間は微調整"
+                }
+              ],
+              "id" : "BB165F27-EE60-4968-8CC3-B047A80EA201",
+              "name" : "再生",
+              "symbol" : "play.circle"
+            },
+            {
+              "bindings" : [
+                {
+                  "action" : {
+                    "amount" : 0.5,
+                    "type" : "media",
+                    "value" : "seek"
+                  },
+                  "control" : "dial",
+                  "enabled" : true,
+                  "gesture" : "clockwise",
+                  "held" : [
+
+                  ],
+                  "id" : "1BF0B9F0-2161-4D3C-BF08-47CE740F993D",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "シーク 0.5秒 ＋"
+                },
+                {
+                  "action" : {
+                    "amount" : -0.5,
+                    "type" : "media",
+                    "value" : "seek"
+                  },
+                  "control" : "dial",
+                  "enabled" : true,
+                  "gesture" : "counterclockwise",
+                  "held" : [
+
+                  ],
+                  "id" : "AA65DC31-3A97-41B7-B96C-8210DD43FBD2",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "シーク 0.5秒 −"
+                }
+              ],
+              "id" : "0D5D8685-DA48-4319-9511-B9FBF125304E",
+              "name" : "微調整",
+              "symbol" : "scope"
+            }
+          ],
+          "name" : "再生"
+        }
+      ]
+    },
+    {
+      "bundleID" : "com.apple.logic10",
+      "enabled" : true,
+      "host" : "",
+      "id" : "A4FB8A91-85A0-4032-A713-434CD44F9CBF",
+      "name" : "Logic Pro",
+      "pages" : [
+        {
+          "id" : "A97142C0-37AE-4218-8F4C-AD0DB34E1178",
+          "layers" : [
+            {
+              "bindings" : [
+                {
+                  "action" : {
+                    "amount" : 1,
+                    "type" : "midi",
+                    "value" : "jog"
+                  },
+                  "control" : "dial",
+                  "enabled" : true,
+                  "gesture" : "clockwise",
+                  "held" : [
+
+                  ],
+                  "id" : "3BBD2BE2-D804-43B7-B2F2-75848577CA89",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "ジョグ ＋"
+                },
+                {
+                  "action" : {
+                    "amount" : -1,
+                    "type" : "midi",
+                    "value" : "jog"
+                  },
+                  "control" : "dial",
+                  "enabled" : true,
+                  "gesture" : "counterclockwise",
+                  "held" : [
+
+                  ],
+                  "id" : "9587666E-BF3B-4503-BC8E-97F7B6BCBF2F",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "ジョグ −"
+                },
+                {
+                  "action" : {
+                    "amount" : 1,
+                    "type" : "midi",
+                    "value" : "play"
+                  },
+                  "control" : "topMiddle",
+                  "enabled" : true,
+                  "gesture" : "tap",
+                  "held" : [
+
+                  ],
+                  "id" : "0D2DB482-4C02-45BF-B6E2-3BBE92CCBE5A",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "再生"
+                },
+                {
+                  "action" : {
+                    "amount" : 1,
+                    "type" : "midi",
+                    "value" : "stop"
+                  },
+                  "control" : "topLeft",
+                  "enabled" : true,
+                  "gesture" : "tap",
+                  "held" : [
+
+                  ],
+                  "id" : "DD01E6AC-236D-4A7B-A171-AFAFD00CE205",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "停止"
+                },
+                {
+                  "action" : {
+                    "amount" : 1,
+                    "targetLayer" : "D3D4A3BF-5A52-40E1-9A27-1665626FC2D0",
+                    "type" : "switchLayer",
+                    "value" : ""
+                  },
+                  "control" : "topRight",
+                  "enabled" : true,
+                  "gesture" : "tap",
+                  "held" : [
+
+                  ],
+                  "id" : "D556749A-B54E-4564-87D1-A51C1C86E6EC",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "編集モード"
+                }
+              ],
+              "id" : "9C91F197-7286-4097-A676-6B5BB76B26A6",
+              "name" : "移動",
+              "symbol" : "waveform"
+            }
+          ],
+          "name" : "移動"
+        },
+        {
+          "id" : "D3D4A3BF-5A52-40E1-9A27-1665626FC2D0",
+          "layers" : [
+            {
+              "bindings" : [
+                {
+                  "action" : {
+                    "amount" : 1,
+                    "type" : "shortcut",
+                    "value" : "cmd+right"
+                  },
+                  "control" : "dial",
+                  "enabled" : true,
+                  "gesture" : "clockwise",
+                  "held" : [
+
+                  ],
+                  "id" : "B0115685-8E1A-40E7-BCE4-D193B2766459",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "横ズーム拡大"
+                },
+                {
+                  "action" : {
+                    "amount" : 1,
+                    "type" : "shortcut",
+                    "value" : "cmd+left"
+                  },
+                  "control" : "dial",
+                  "enabled" : true,
+                  "gesture" : "counterclockwise",
+                  "held" : [
+
+                  ],
+                  "id" : "0E6E1FD1-766F-4E0D-A573-77F15C9F6B26",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "横ズーム縮小"
+                },
+                {
+                  "action" : {
+                    "amount" : 1,
+                    "targetLayer" : "A97142C0-37AE-4218-8F4C-AD0DB34E1178",
+                    "type" : "switchLayer",
+                    "value" : ""
+                  },
+                  "control" : "topLeft",
+                  "enabled" : true,
+                  "gesture" : "tap",
+                  "held" : [
+
+                  ],
+                  "id" : "08B715BE-FD69-4F7F-84EE-7D258393289E",
+                  "modifiers" : [
+
+                  ],
+                  "name" : "移動モード"
+                }
+              ],
+              "id" : "F7934285-249E-40D0-B27B-43FB85187245",
+              "name" : "編集",
+              "symbol" : "arrow.up.left.and.arrow.down.right"
+            }
+          ],
+          "name" : "編集"
+        }
+      ]
+    },
+    {
+      "bundleID" : "",
+      "enabled" : true,
+      "host" : "",
+      "id" : "E38D5931-39B9-4428-B461-4D2FB048470A",
+      "name" : "その他のアプリ",
+      "pages" : [
+        {
+          "id" : "642BCDE7-6E07-4369-82F1-4D54A6A43704",
+          "layers" : [
+            {
+              "bindings" : [
+
+              ],
+              "id" : "B6D6CDCE-957D-46EC-A530-94F4A830885E",
+              "name" : "基本",
+              "symbol" : "square.stack"
+            }
+          ],
+          "name" : "基本"
+        }
+      ]
+    }
+  ],
+  "showHUD" : true,
+  "vendorLayout" : {
+
+  },
+  "version" : 3
+}
