@@ -2,6 +2,17 @@
 
 Dial Studio is an unofficial macOS app for customizing the Ulanzi D100H. Assign actions to its buttons and dial, organize them into pages and layers, and switch profiles automatically or manually.
 
+![Dial Studio showing the device, layers, and action timeline](docs/images/dial-studio.png)
+
+## Why Dial Studio?
+
+[Ulanzi Studio](https://docs.ulanzistudio.com/) provides custom controls and presets. Dial Studio focuses on flexible, app-aware workflows for macOS:
+
+- **Stackable layers within each page**: hold or toggle layers, inherit unassigned controls, and choose which layer takes priority.
+- **More ways to use each button**: assign separate actions to press, release, short press, and long-press events, or run a sequence with delays.
+- **App-aware profiles**: switch automatically based on the foreground app, window title, or Chrome site, or switch manually from the device.
+- **Actions beyond shortcuts**: use Mackie Control with Logic Pro and other compatible DAWs, system media controls, shell scripts, AppleScript, or JavaScript in Chrome.
+
 ## Requirements
 
 - macOS 14 or later and a Bluetooth-paired Ulanzi D100H
